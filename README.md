@@ -3,7 +3,7 @@ Installation guide:
 https://github.com/dimitri/pgloader/blob/master/INSTALL.md
 
 # Create file migrate_mysql.load
-
+<code>
 LOAD DATABASE
      FROM      mysql://team5:923494g9uii8WV^V819c@118.69.73.196:3333/svcdb
      INTO postgresql://postgres:123456@61.28.227.201/dw
@@ -40,11 +40,12 @@ LOAD DATABASE
  $$ ALTER TABLE IF EXISTS prod.user RENAME TO user_bk; $$,
  $$ ALTER TABLE IF EXISTS prod.user_m RENAME TO "user"; $$,
  $$ DROP TABLE IF EXISTS prod.user_bk; $$;
- 
+</code>
  # Create cron job run hourly
  Go to folder /etct/cron/cron.hourly/
  Create file migreate_prod
+ <code>
    #!/bin/bash
   pgloader migrate_mysql.load
-  
+ </code>
   ----- DONE ------
